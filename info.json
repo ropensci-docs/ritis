@@ -1,0 +1,12 @@
+{
+  "commit": {
+    "commit": "ce0c03e203e6fe9b49e4e98a5f28a1ff5152d775",
+    "author": "Scott Chamberlain <sckott@fastmail.com>",
+    "time": "2021-02-02 02:35:24",
+    "files": 1,
+    "merge": false,
+    "message": "remove knitr from suggestsl remove vignettebuilder field since vignettes in Rbuildignore\n"
+  },
+  "remote": "https://github.com/ropensci/ritis",
+  "pkg": "ritis"
+}
