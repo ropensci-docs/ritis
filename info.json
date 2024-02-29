@@ -1,0 +1,12 @@
+{
+  "commit": {
+    "commit": "95f190cd328c80e75aa9619f04db7cd1016f7e9c",
+    "author": "jcblum <40366716+jcblum@users.noreply.github.com>",
+    "time": "2022-09-28 05:31:44",
+    "files": 1,
+    "merge": false,
+    "message": "Add new maintainer, close #23"
+  },
+  "repo": "https://github.com/ropensci/ritis",
+  "pkg": "ritis"
+}
