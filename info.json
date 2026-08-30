@@ -1,0 +1,13 @@
+{
+  "commit": {
+    "commit": "24b4eb90ee869929285c9378bd216db01adaa2bc",
+    "author": "Jeroen Ooms <jeroenooms@gmail.com>",
+    "time": "2025-02-04T14:34:03Z",
+    "files": 1,
+    "merge": false,
+    "message": "Use rOpenSci ROR link as per CRAN request\n"
+  },
+  "repo": "https://github.com/ropensci/ritis",
+  "pkg": "ritis",
+  "time": "2026-08-30T07:22:22Z"
+}

@@ -1,0 +1,192 @@
+# ritis
+
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![cran
+checks](https://cranchecks.info/badges/worst/ritis)](https://cranchecks.info/pkgs/ritis)
+[![R-check](https://github.com/ropensci/ritis/workflows/R-check/badge.svg)](https://github.com/ropensci/ritis/actions?query=workflow%3AR-check)
+[![codecov](https://codecov.io/gh/ropensci/ritis/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/ritis)
+[![rstudio mirror
+downloads](https://cranlogs.r-pkg.org/badges/ritis)](https://github.com/r-hub/cranlogs.app)
+[![cran
+version](https://www.r-pkg.org/badges/version/ritis)](https://cran.r-project.org/package=ritis)
+
+An interface to the Integrated Taxonomic Information System (ITIS)
+
+- ITIS API Docs: <https://www.itis.gov/ws_description.html>
+- Solr service: <https://www.itis.gov/solr_documentation.html>
+- taxize book: <https://taxize.dev/>
+- ritis docs: <https://docs.ropensci.org/ritis/>
+
+How to cite ITIS. From <https://itis.gov/citation.html>
+
+To cite data obtained from ITIS, the following citation format is
+offered as a suggestion:
+
+``` R
+Retrieved [month, day, year], from the Integrated Taxonomic Information System on-line database, http://www.itis.gov.
+```
+
+ITIS is one of many different taxonomic data sources. Other include:
+Catalogue of Life (and COL+), NCBI taxonomy, International Plant Names
+Index, Index Fungorum, and more. The Wikipedia entry
+(<https://en.wikipedia.org/wiki/Integrated_Taxonomic_Information_System>)
+states that ITIS has a North American focus, but includes many taxa not
+in North America.
+
+## Terminology
+
+- “mononomial”: a taxonomic name with one part, e.g, *Poa*
+- “binomial”: a taxonomic name with two parts, e.g, *Poa annua*
+- “trinomial”: a taxonomic name with three parts, e.g, *Poa annua annua*
+
+## Installation
+
+Stable, CRAN version
+
+``` r
+
+install.packages("ritis")
+```
+
+Dev version
+
+``` r
+
+remotes::install_github("ropensci/ritis")
+```
+
+``` r
+
+library("ritis")
+```
+
+## Meta
+
+- Please [report any issues or
+  bugs](https://github.com/ropensci/ritis/issues).
+- License: MIT
+- Get citation information for `ritis` in R doing
+  `citation(package = 'ritis')`
+- Please note that this package is released with a [Contributor Code of
+  Conduct](https://ropensci.org/code-of-conduct/). By contributing to
+  this project, you agree to abide by its terms.
+
+# Package index
+
+## All functions
+
+- [`accepted_names()`](https://docs.ropensci.org/ritis/reference/accepted_names.md)
+  : Get accepted names from tsn
+- [`any_match_count()`](https://docs.ropensci.org/ritis/reference/any_match_count.md)
+  : Get any match count.
+- [`comment_detail()`](https://docs.ropensci.org/ritis/reference/comment_detail.md)
+  : Get comment detail from TSN
+- [`common_names()`](https://docs.ropensci.org/ritis/reference/common_names.md)
+  : Get common names from tsn
+- [`core_metadata()`](https://docs.ropensci.org/ritis/reference/core_metadata.md)
+  : Get core metadata from tsn
+- [`coverage()`](https://docs.ropensci.org/ritis/reference/coverage.md)
+  : Get coverge from tsn
+- [`credibility_rating()`](https://docs.ropensci.org/ritis/reference/credibility.md)
+  [`credibility_ratings()`](https://docs.ropensci.org/ritis/reference/credibility.md)
+  : Get credibility rating from tsn
+- [`currency()`](https://docs.ropensci.org/ritis/reference/currency.md)
+  : Get currency from tsn
+- [`date_data()`](https://docs.ropensci.org/ritis/reference/date_data.md)
+  : Get date data from tsn
+- [`description()`](https://docs.ropensci.org/ritis/reference/description.md)
+  : Get description of the ITIS service
+- [`experts()`](https://docs.ropensci.org/ritis/reference/experts.md) :
+  Get expert information for the TSN.
+- [`full_record()`](https://docs.ropensci.org/ritis/reference/full_record.md)
+  : Get full record from TSN or lsid
+- [`geographic_divisions()`](https://docs.ropensci.org/ritis/reference/geographic_divisions.md)
+  : Get geographic divisions from tsn
+- [`geographic_values()`](https://docs.ropensci.org/ritis/reference/geographic_values.md)
+  : Get all possible geographic values
+- [`global_species_completeness()`](https://docs.ropensci.org/ritis/reference/global_species_completeness.md)
+  : Get global species completeness from tsn
+- [`hierarchy_down()`](https://docs.ropensci.org/ritis/reference/hierarchy.md)
+  [`hierarchy_up()`](https://docs.ropensci.org/ritis/reference/hierarchy.md)
+  [`hierarchy_full()`](https://docs.ropensci.org/ritis/reference/hierarchy.md)
+  : Get hierarchy down from tsn
+- [`itis_facet()`](https://docs.ropensci.org/ritis/reference/itis_facet.md)
+  : ITIS Solr facet
+- [`itis_group()`](https://docs.ropensci.org/ritis/reference/itis_group.md)
+  : ITIS Solr group search
+- [`itis_highlight()`](https://docs.ropensci.org/ritis/reference/itis_highlight.md)
+  : ITIS Solr highlight
+- [`itis_search()`](https://docs.ropensci.org/ritis/reference/itis_search.md)
+  : ITIS Solr search
+- [`jurisdictional_origin()`](https://docs.ropensci.org/ritis/reference/jurisdiction.md)
+  [`jurisdiction_origin_values()`](https://docs.ropensci.org/ritis/reference/jurisdiction.md)
+  [`jurisdiction_values()`](https://docs.ropensci.org/ritis/reference/jurisdiction.md)
+  : Get jurisdictional origin from tsn
+- [`kingdom_name()`](https://docs.ropensci.org/ritis/reference/kingdoms.md)
+  [`kingdom_names()`](https://docs.ropensci.org/ritis/reference/kingdoms.md)
+  : Get kingdom names from tsn
+- [`last_change_date()`](https://docs.ropensci.org/ritis/reference/last_change_date.md)
+  : Provides the date the ITIS database was last updated
+- [`lsid2tsn()`](https://docs.ropensci.org/ritis/reference/lsid2tsn.md)
+  : Gets the TSN corresponding to the LSID, or an empty result if there
+  is no match.
+- [`other_sources()`](https://docs.ropensci.org/ritis/reference/other_sources.md)
+  : Returns a list of the other sources used for the TSN.
+- [`parent_tsn()`](https://docs.ropensci.org/ritis/reference/parent_tsn.md)
+  : Returns the parent TSN for the entered TSN.
+- [`publications()`](https://docs.ropensci.org/ritis/reference/publications.md)
+  : Returns a list of the pulications used for the TSN.
+- [`rank_name()`](https://docs.ropensci.org/ritis/reference/rank_name.md)
+  : Returns the kingdom and rank information for the TSN.
+- [`rank_names()`](https://docs.ropensci.org/ritis/reference/rank_names.md)
+  : Provides a list of all the unique rank names contained in the
+  database and their kingdom and rank ID values.
+- [`record()`](https://docs.ropensci.org/ritis/reference/record.md) :
+  Gets a record from an LSID
+- [`review_year()`](https://docs.ropensci.org/ritis/reference/review_year.md)
+  : Returns the review year for the TSN.
+- [`ritis-package`](https://docs.ropensci.org/ritis/reference/ritis-package.md)
+  [`ritis`](https://docs.ropensci.org/ritis/reference/ritis-package.md)
+  : ritis
+- [`scientific_name()`](https://docs.ropensci.org/ritis/reference/scientific_name.md)
+  : Returns the scientific name for the TSN. Also returns the component
+  parts (names and indicators) of the scientific name.
+- [`search_any_match_paged()`](https://docs.ropensci.org/ritis/reference/search_any_match_paged.md)
+  : Search for any matched page
+- [`search_anymatch()`](https://docs.ropensci.org/ritis/reference/search_anymatch.md)
+  : Search for any match
+- [`search_common()`](https://docs.ropensci.org/ritis/reference/search_common.md)
+  : Search for tsn by common name
+- [`search_scientific()`](https://docs.ropensci.org/ritis/reference/search_scientific.md)
+  : Search by scientific name
+- [`solr`](https://docs.ropensci.org/ritis/reference/solr.md) : ITIS
+  Solr Methods
+- [`solr_fields`](https://docs.ropensci.org/ritis/reference/solr_fields.md)
+  : List of fields that can be used in solr functions
+- [`synonym_names()`](https://docs.ropensci.org/ritis/reference/synonym_names.md)
+  : Returns a list of the synonyms (if any) for the TSN.
+- [`taxon_authorship()`](https://docs.ropensci.org/ritis/reference/taxon_authorship.md)
+  : Returns the author information for the TSN.
+- [`terms()`](https://docs.ropensci.org/ritis/reference/terms.md) : Get
+  ITIS terms, i.e., tsn's, authors, common names, and scientific names
+- [`tsn2lsid()`](https://docs.ropensci.org/ritis/reference/tsn2lsid.md)
+  : Gets the unique LSID for the TSN, or an empty result if there is no
+  match.
+- [`tsn_by_vernacular_language()`](https://docs.ropensci.org/ritis/reference/tsn_by_vernacular_language.md)
+  : Get tsn by vernacular language
+- [`unacceptability_reason()`](https://docs.ropensci.org/ritis/reference/unacceptability_reason.md)
+  : Returns the unacceptability reason, if any, for the TSN.
+- [`usage()`](https://docs.ropensci.org/ritis/reference/usage.md) :
+  Returns the usage information for the TSN.
+- [`vernacular_languages()`](https://docs.ropensci.org/ritis/reference/vernacular_languages.md)
+  : Provides a list of the unique languages used in the vernacular
+  table.
+
+# Articles
+
+### All vignettes
+
+- [ritis
+  introduction](https://docs.ropensci.org/ritis/articles/ritis.md):

@@ -1,0 +1,187 @@
+# ritis introduction
+
+An interface to the Integrated Taxonomic Information System (ITIS)
+
+See also the taxize book (<https://taxize.dev/>) for a manual on working
+with taxonomic data in R, including with ITIS data.
+
+How to cite ITIS. From <https://itis.gov/citation.html>
+
+To cite data obtained from ITIS, the following citation format is
+offered as a suggestion:
+
+    Retrieved [month, day, year], from the Integrated Taxonomic Information System on-line database, http://www.itis.gov.
+
+ITIS is one of many different taxonomic data sources. Other include:
+Catalogue of Life (and COL+), NCBI taxonomy, International Plant Names
+Index, Index Fungorum, and more. The Wikipedia entry
+(<https://en.wikipedia.org/wiki/Integrated_Taxonomic_Information_System>)
+states that ITIS has a North American focus, but includes many taxa not
+in North America.
+
+## Terminology
+
+- “mononomial”: a taxonomic name with one part, e.g, *Poa*
+- “binomial”: a taxonomic name with two parts, e.g, *Poa annua*
+- “trinomial”: a taxonomic name with three parts, e.g, *Poa annua annua*
+
+## Installation
+
+Install from CRAN
+
+``` r
+
+install.packages("ritis")
+```
+
+Or install the development version from GitHub
+
+``` r
+
+remotes::install_github("ropensci/ritis")
+```
+
+Load `ritis`
+
+``` r
+
+library("ritis")
+```
+
+## ITIS Solr interface
+
+There are four methods.
+
+- [`itis_search()`](https://docs.ropensci.org/ritis/reference/itis_search.md) -
+  Search
+- [`itis_group()`](https://docs.ropensci.org/ritis/reference/itis_group.md) -
+  Group
+- [`itis_highlight()`](https://docs.ropensci.org/ritis/reference/itis_highlight.md) -
+  Hightlight
+- [`itis_facet()`](https://docs.ropensci.org/ritis/reference/itis_facet.md) -
+  Facet
+
+These four methods use the equivalent functions in the package
+`solrium`, e.g.,
+[`ritis::itis_search()`](https://docs.ropensci.org/ritis/reference/itis_search.md)
+uses
+[`solrium::solr_search()`](https://rdrr.io/pkg/solrium/man/solr_search.html),
+etc. The `itis_*()` functions simply use `...` to allow users to pass on
+parameters to the wrapped `solrium` functions. So do read the `solrium`
+docs.
+
+ITIS Solr API docs: <https://www.itis.gov/solr_documentation.html>
+
+Some examples:
+
+matches only monomials
+
+``` r
+
+itis_search(q = "nameWOInd:/[A-Za-z0-9]*[ ]{0,0}*/")
+#> # A tibble: 10 x 25
+#>    tsn   nameWInd nameWOInd unit1 usage credibilityRati… completenessRat…
+#>    <chr> <chr>    <chr>     <chr> <chr> <chr>            <chr>           
+#>  1 1526… Ornitho… Ornithoi… Orni… valid No review; untr… unknown         
+#>  2 1526… Ornitho… Ornithoc… Orni… valid No review; untr… unknown         
+#>  3 1526… Ornitho… Ornithom… Orni… valid No review; untr… unknown         
+#>  4 1526… Pseudol… Pseudoly… Pseu… valid No review; untr… unknown         
+#>  5 1527… Stilbom… Stilbome… Stil… valid No review; untr… unknown         
+#>  6 1527… Nycteri… Nycterib… Nyct… valid No review; untr… unknown         
+#>  7 1527… Nycteri… Nycterib… Nyct… inva… No review; untr… unknown         
+#>  8 1527… Nycteri… Nycterib… Nyct… valid No review; untr… unknown         
+#>  9 1527… Basilia  Basilia   Basi… valid No review; untr… unknown         
+#> 10 1527… Strebli… Streblin… Stre… valid No review; untr… unknown         
+#> # … with 18 more variables: currencyRating <chr>, kingdom <chr>,
+#> #   parentTSN <chr>, rankID <chr>, rank <chr>, hierarchySoFar <chr>,
+#> #   hierarchySoFarWRanks <chr>, hierarchyTSN <chr>, otherSource <chr>,
+#> #   createDate <chr>, updateDate <chr>, hierarchicalSort <chr>,
+#> #   `_version_` <dbl>, synonyms <chr>, synonymTSNs <chr>, vernacular <chr>,
+#> #   unacceptReason <chr>, acceptedTSN <chr>
+```
+
+matches only binomials
+
+``` r
+
+itis_search(q = "nameWOInd:/[A-Za-z0-9]*[ ]{1,1}[A-Za-z0-9]*/")
+#> # A tibble: 10 x 24
+#>    tsn   nameWInd nameWOInd unit1 unit2 usage unacceptReason credibilityRati…
+#>    <chr> <chr>    <chr>     <chr> <chr> <chr> <chr>          <chr>           
+#>  1 1526… Feronia… Feronia … Fero… spin… inva… junior synonym No review; untr…
+#>  2 1526… Ornitho… Ornithoi… Orni… conf… valid <NA>           No review; untr…
+#>  3 1526… Ornitho… Ornithom… Orni… conf… inva… junior synonym No review; untr…
+#>  4 1526… Ornitho… Ornithoi… Orni… vici… valid <NA>           No review; untr…
+#>  5 1526… Ornitho… Ornithoi… Orni… prom… inva… junior synonym No review; untr…
+#>  6 1526… Ornitho… Ornithom… Orni… vici… inva… junior synonym No review; untr…
+#>  7 1526… Ornitho… Ornithoc… Orni… eryt… valid <NA>           No review; untr…
+#>  8 1526… Ornitho… Ornithom… Orni… bute… inva… junior synonym No review; untr…
+#>  9 1526… Ornitho… Ornithom… Orni… eryt… inva… junior synonym No review; untr…
+#> 10 1526… Ornitho… Ornithom… Orni… nebu… inva… junior synonym No review; untr…
+#> # … with 16 more variables: taxonAuthor <chr>, kingdom <chr>, rankID <chr>,
+#> #   rank <chr>, hierarchySoFar <chr>, hierarchySoFarWRanks <chr>,
+#> #   hierarchyTSN <chr>, synonyms <chr>, synonymTSNs <chr>, otherSource <chr>,
+#> #   acceptedTSN <chr>, createDate <chr>, updateDate <chr>, `_version_` <dbl>,
+#> #   parentTSN <chr>, hierarchicalSort <chr>
+```
+
+The syntax for
+[`itis_search()`](https://docs.ropensci.org/ritis/reference/itis_search.md)
+can be a bit hard to grasp. See this ITIS page
+<https://itis.gov/solr_examples.html> for help on generating the syntax
+they want for specific searches.
+
+## ITIS REST API interface
+
+ITIS REST API docs:
+[http://www.itis.gov/ws_description.html](http://www.itis.gov/ws_description.md)
+
+The following are some example uses. There are many more methods not
+shown below
+
+------------------------------------------------------------------------
+
+Get accepted names for a TSN
+
+``` r
+
+accepted_names(tsn = 504239)
+#> # A tibble: 1 x 3
+#>   acceptedName        acceptedTsn author    
+#>   <chr>               <chr>       <chr>     
+#> 1 Dasiphora fruticosa 836659      (L.) Rydb.
+```
+
+Get common names for a TSN
+
+``` r
+
+common_names(tsn = 183833)
+#> # A tibble: 3 x 3
+#>   commonName          language tsn   
+#>   <chr>               <chr>    <chr> 
+#> 1 African hunting dog English  183833
+#> 2 African Wild Dog    English  183833
+#> 3 Painted Hunting Dog English  183833
+```
+
+Full hierarchy for a TSN
+
+``` r
+
+hierarchy_full(tsn = 37906)
+#> # A tibble: 60 x 5
+#>    parentname        parenttsn rankname      taxonname       tsn   
+#>    <chr>             <chr>     <chr>         <chr>           <chr> 
+#>  1 ""                ""        Kingdom       Plantae         202422
+#>  2 "Plantae"         "202422"  Subkingdom    Viridiplantae   954898
+#>  3 "Viridiplantae"   "954898"  Infrakingdom  Streptophyta    846494
+#>  4 "Streptophyta"    "846494"  Superdivision Embryophyta     954900
+#>  5 "Embryophyta"     "954900"  Division      Tracheophyta    846496
+#>  6 "Tracheophyta"    "846496"  Subdivision   Spermatophytina 846504
+#>  7 "Spermatophytina" "846504"  Class         Magnoliopsida   18063 
+#>  8 "Magnoliopsida"   "18063"   Superorder    Asteranae       846535
+#>  9 "Asteranae"       "846535"  Order         Asterales       35419 
+#> 10 "Asterales"       "35419"   Family        Asteraceae      35420 
+#> # … with 50 more rows
+```
